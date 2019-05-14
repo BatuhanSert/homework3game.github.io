@@ -2,26 +2,26 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Gamedev Canvas Workshop</title>
+    <title>Homework III</title>
     <style>
         * { padding: 0; margin: 0; }
         canvas { background: #eee; display: block; margin: 0 auto; }
     </style>
 </head>
 <body>
-<canvas id="myCanvas" width="480" height="320"></canvas>
+<canvas id="tuval" width="480" height="320"></canvas>
 
 <script>
-    var canvas = document.getElementById("myCanvas");
-    var ctx = canvas.getContext("2d");
+    var tuval = document.getElementById("tuval");
+    var cizim = tuval.getContext("2d");
     var ballRadius = 10;
-    var x = canvas.width/2;
-    var y = canvas.height/2;
+    var x = tuval.width/2;
+    var y = tuval.height/2;
     var dx = 2;
     var dy = -2;
     var paddleHeight = 10;
     var paddleWidth = 75;
-    var paddleX = (canvas.width-paddleWidth)/2;
+    var paddleX = (tuval.width-paddleWidth)/2;
     var rightPressed = false;
     var leftPressed = false;
     var brickRowCount = 3;
@@ -128,18 +128,18 @@
     }
 
     function drawBall() {
-        ctx.beginPath();
-        ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-        ctx.fillStyle = "#0095DD";
-        ctx.fill();
-        ctx.closePath();
+        cizim.beginPath();
+        cizim.arc(x, y, ballRadius, 0, Math.PI*2);
+        cizim.fillStyle = "#0095DD";
+        cizim.fill();
+        cizim.closePath();
     }
     function drawPaddle() {
-        ctx.beginPath();
-        ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-        ctx.fillStyle = "#0095DD";
-        ctx.fill();
-        ctx.closePath();
+        cizim.beginPath();
+        cizim.rect(paddleX, tuval.height-paddleHeight, paddleWidth, paddleHeight);
+        cizim.fillStyle = "#0095DD";
+        cizim.fill();
+        cizim.closePath();
     }
     function drawBricks() {
         for(c=0; c<brickColumnCount; c++) {
@@ -151,11 +151,11 @@
                         var brickY = (c*(brickHeight+brickPadding))+brickOffsetTop;
                         bricks[c][r].x = brickX;
                         bricks[c][r].y = brickY;
-                        ctx.beginPath();
-                        ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                        ctx.fillStyle = "#ff0000";
-                        ctx.fill();
-                        ctx.closePath();
+                        cizim.beginPath();
+                        cizim.rect(brickX, brickY, brickWidth, brickHeight);
+                        cizim.fillStyle = "#ff0000";
+                        cizim.fill();
+                        cizim.closePath();
 
                     }
                     //blue
@@ -164,11 +164,11 @@
                         var brickY = (c*(brickHeight+brickPadding))+brickOffsetTop;
                         bricks[c][r].x = brickX;
                         bricks[c][r].y = brickY;
-                        ctx.beginPath();
-                        ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                        ctx.fillStyle = "#0000ff";
-                        ctx.fill();
-                        ctx.closePath();
+                        cizim.beginPath();
+                        cizim.rect(brickX, brickY, brickWidth, brickHeight);
+                        cizim.fillStyle = "#0000ff";
+                        cizim.fill();
+                        cizim.closePath();
 
                     }
                     //green
@@ -177,11 +177,11 @@
                         var brickY = (c*(brickHeight+brickPadding))+brickOffsetTop;
                         bricks[c][r].x = brickX;
                         bricks[c][r].y = brickY;
-                        ctx.beginPath();
-                        ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                        ctx.fillStyle = "#339933";
-                        ctx.fill();
-                        ctx.closePath();
+                        cizim.beginPath();
+                        cizim.rect(brickX, brickY, brickWidth, brickHeight);
+                        cizim.fillStyle = "#339933";
+                        cizim.fill();
+                        cizim.closePath();
                     }
                     //purple
                     else if (c == 1 && r == 0 ){
@@ -189,11 +189,11 @@
                         var brickY = (c*(brickHeight+brickPadding))+brickOffsetTop;
                         bricks[c][r].x = brickX;
                         bricks[c][r].y = brickY;
-                        ctx.beginPath();
-                        ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                        ctx.fillStyle = "#990099";
-                        ctx.fill();
-                        ctx.closePath();
+                        cizim.beginPath();
+                        cizim.rect(brickX, brickY, brickWidth, brickHeight);
+                        cizim.fillStyle = "#990099";
+                        cizim.fill();
+                        cizim.closePath();
 
                     }//yellow
                     else if (c == 1 && r == 1 ){
@@ -201,22 +201,22 @@
                         var brickY = (c*(brickHeight+brickPadding))+brickOffsetTop;
                         bricks[c][r].x = brickX;
                         bricks[c][r].y = brickY;
-                        ctx.beginPath();
-                        ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                        ctx.fillStyle = "#ffff00";
-                        ctx.fill();
-                        ctx.closePath();
+                        cizim.beginPath();
+                        cizim.rect(brickX, brickY, brickWidth, brickHeight);
+                        cizim.fillStyle = "#ffff00";
+                        cizim.fill();
+                        cizim.closePath();
                     }//black
                     else if (c == 2 && r == 0) {
                         var brickX = (r*(brickWidthSiyah+brickPaddingSiyah))+brickOffsetLeftSiyah;
                         var brickY = (c*(brickHeightSiyah+brickPaddingSiyah))+brickOffsetTop;
                         bricks[c][r].x = brickX;
                         bricks[c][r].y = brickY;
-                        ctx.beginPath();
-                        ctx.rect(brickX, brickY, brickWidthSiyah, brickHeightSiyah);
-                        ctx.fillStyle = "#000000";
-                        ctx.fill();
-                        ctx.closePath();
+                        cizim.beginPath();
+                        cizim.rect(brickX, brickY, brickWidthSiyah, brickHeightSiyah);
+                        cizim.fillStyle = "#000000";
+                        cizim.fill();
+                        cizim.closePath();
                     }
                     else{}
 
@@ -225,26 +225,26 @@
         }
     }
     function drawScore() {
-        ctx.font = "16px Arial";
-        ctx.fillStyle = "#0095DD";
-        ctx.fillText("Score: "+ score, canvas.width/3, 300);
+        cizim.font = "16px Arial";
+        cizim.fillStyle = "#0095DD";
+        cizim.fillText("Score: "+ score, tuval.width/3, 300);
     }
 
     function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        cizim.clearRect(0, 0, tuval.width, tuval.height);
         drawBricks();
         drawBall();
         drawPaddle();
         drawScore();
         collisionDetection();
 
-        if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
+        if(x + dx > tuval.width-ballRadius || x + dx < ballRadius) {
             dx = -1 * dx;
         }
         if(y + dy < ballRadius) {
             dy = -dy;
         }
-        else if(y + dy > canvas.height-ballRadius) {
+        else if(y + dy > tuval.height-ballRadius) {
             if(x > paddleX && x < paddleX + paddleWidth) {
                 dy = -dy;
             }
@@ -255,7 +255,7 @@
         }
 
 
-        if(rightPressed && paddleX < canvas.width-paddleWidth) {
+        if(rightPressed && paddleX < tuval.width-paddleWidth) {
             paddleX += 7;
         }
         else if(leftPressed && paddleX > 0) {
